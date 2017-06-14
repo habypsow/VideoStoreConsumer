@@ -24,9 +24,9 @@ var MovieListView = Backbone.View.extend({
   fetchMovies: function(e) {
     e.preventDefault();
 
-    var searchTerm = this.getQueryForm();
-    this.model.fetch({ data: $.param({ page: 1}), reset:true});
-    console.log("this is " + searchTerm);
+    var query = this.getQueryForm();
+    this.model.fetch({ data: $.param({  query}), reset:true});
+    console.log("this is " + query);
 
   },
   render: function() {
