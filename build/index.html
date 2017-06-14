@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/_settings.css">
-    <link rel="stylesheet" type="text/css" href="css/foundation.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <title>Backbone Baseline</title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/_settings.css">
+  <link rel="stylesheet" type="text/css" href="css/foundation.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <title>Backbone Baseline</title>
+</head>
+<body>
+  <header>
+    <h1>Movies</h1>
+  </header>
+  <main>
+    <section id='rental'></section>
+    <section id='rental-list'></section>
+  </main>
 
-    <script src="/app.bundle.js"></script>
+  <!-- Templates -->
+  <!-- Rental (local API templates) -->
+  <script id='rental-card-template' type='text/template'>
+    <li><%- rental.title %></li>
+  </script>
 
-  </body>
-  </html>
+  <!-- add variable rental to template render in app.js -->
+  <script id='rental-info-template' type='text/template'>
+    <h3>Title:<%- rental.title %> </h3>
+    <h4>Overview:<%- rental.overview %> </h4>
+    <h4>Release Date:<%- rental.release_date %> </h4>
+    <h4>Image:<%- rental.image_url %> </h4>
+    <button class="alert button" id="deleteButton">Delete</button>
+  </script>
+
+
+  <!-- temporary (trying to use one template for both) Movies (Movie API templates) -->
+  <script id='movie-card-template' type='text/template'>
+    <li><%- movie.title %></li>
+  </script>
+
+  <script id='movie-info-template' type='text/template'>
+    <h3>Title:<%- movie.title %> </h3>
+    <h4>Overview:<%- movie.overview %> </h4>
+    <h4>Release Date:<%- movie.release_date %> </h4>
+    <h4>Image:<%- movie.image_url %> </h4>
+    <button class="success button" id="addButton">Add to Library</button>
+    <button class="alert button" id="deleteButton">Delete</button>
+  </script>
+
+
+  <script src="/app.bundle.js"></script>
+
+</body>
+</html>
