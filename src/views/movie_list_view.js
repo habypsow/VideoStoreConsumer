@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-
+import $ from 'jquery';
 import MovieView from './movie_view';
 
 var MovieListView = Backbone.View.extend({
@@ -9,8 +9,25 @@ var MovieListView = Backbone.View.extend({
 
     this.listenTo(this.model, "update", this.render);
 
-    var that = this;
+
     this.model.fetch();
+  },
+  events: {
+    'click #search-movies' : 'fetchMovies'
+  },
+  getQueryForm: function() {
+    var searchTerm = this.$('#search-query').val();
+    this.$('#search-query').val('');
+
+    return searchTerm;
+  },
+  fetchMovies: function(e) {
+    e.preventDefault();
+
+    var searchTerm = this.getQueryForm();
+    this.model.fetch({ data: $.param({ page: 1}), reset:true});
+    console.log("this is " + searchTerm);
+
   },
   render: function() {
     this.$('#rental-list').empty();
