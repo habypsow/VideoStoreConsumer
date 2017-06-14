@@ -5,6 +5,8 @@ import MovieView from './movie_view';
 var MovieListView = Backbone.View.extend({
   initialize: function(params) {
     this.template = params.template;
+    this.detailsTemplate = params.detailsTemplate;
+    this.$('#rental-details').hide();
     //add additional needed templates here
 
     this.listenTo(this.model, "update", this.render);
@@ -13,6 +15,7 @@ var MovieListView = Backbone.View.extend({
     this.model.fetch();
   },
   events: {
+
     'click #search-movies' : 'fetchMovies'
   },
   getQueryForm: function() {
@@ -36,8 +39,15 @@ var MovieListView = Backbone.View.extend({
         template: that.template
       });
       this.$('#rental-list').append(movieView.render().$el);
+      this.listenTo(movieView, "selected", this.showDetails);
     });
     return this;
+  },
+  showDetails: function(model) {
+    this.detailsRental = model;
+    var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
+    this.$('#rental-details').html(compiledTemplate);
+    this.$('#rental-details').show();
   }
 });
 

@@ -11,7 +11,8 @@ var rentalLibraryList = new MovieList({});
 var rentalLibraryListView = new MovieListView({
   model: rentalLibraryList,
   template: _.template($('#rental-card-template').html()),
-  el: 'main'
+  el: 'main',
+  detailsTemplate: _.template($('#rental-info-template').html())
 });
 // ready to go
 $(document).ready(function() {

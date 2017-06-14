@@ -17,9 +17,10 @@
     <input type='text' placeholder='query' id='search-query' />
     <button class="button success" id="search-movies">Search</button>
   </form>
-  
-    <section id='rental'></section>
+
+    <section id='rental-details'></section>
     <section id='rental-list'></section>
+
   </main>
 
   <!-- Templates -->
@@ -33,7 +34,8 @@
     <h3>Title:<%- rental.title %> </h3>
     <h4>Overview:<%- rental.overview %> </h4>
     <h4>Release Date:<%- rental.release_date %> </h4>
-    <h4>Image:<%- rental.image_url %> </h4>
+
+    <img src= '<%- rental.image_url %>' >
     <button class="alert button" id="deleteButton">Delete</button>
   </script>
 
