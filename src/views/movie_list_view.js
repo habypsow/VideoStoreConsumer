@@ -6,6 +6,7 @@ var MovieListView = Backbone.View.extend({
   initialize: function(params) {
     this.template = params.template;
     this.detailsTemplate = params.detailsTemplate;
+    var rentalsShowing = true;
     this.$('#rental-details').hide();
     //add additional needed templates here
 
@@ -23,11 +24,13 @@ var MovieListView = Backbone.View.extend({
     $('#see_movie_search').hide();
     $('#see_rentals').show();
     $('form').show();
+    this.rentalsShowing = false;
   },
   hideForm: function() {
     $('#see_movie_search').show();
     $('#see_rentals').hide();
     $('form').hide();
+    this.rentalsShowing = true;
     this.model.fetch();
   },
   getQueryForm: function() {
@@ -59,6 +62,9 @@ var MovieListView = Backbone.View.extend({
     this.detailsRental = model;
     var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
     this.$('#rental-details').html(compiledTemplate);
+    if (this.rentalsShowing) {
+      this.$('#addRentalButton').hide();
+    }
     this.$('#rental-details').show();
     this.$('#rental-list').hide();
   }
