@@ -11,11 +11,13 @@ var rentalLibraryList = new MovieList({});
 var rentalLibraryListView = new MovieListView({
   model: rentalLibraryList,
   template: _.template($('#rental-card-template').html()),
-  el: 'main',
+  el: 'body',
   detailsTemplate: _.template($('#rental-info-template').html())
 });
 // ready to go
 $(document).ready(function() {
 
-rentalLibraryListView.render();
+  rentalLibraryListView.hideForm();
+  rentalLibraryListView.render();
+
 });

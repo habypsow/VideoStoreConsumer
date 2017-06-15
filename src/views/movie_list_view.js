@@ -15,8 +15,20 @@ var MovieListView = Backbone.View.extend({
     this.model.fetch();
   },
   events: {
-
-    'click #search-movies' : 'fetchMovies'
+    'click #see_movie_search' : 'showForm',
+    'click #search-movies' : 'fetchMovies',
+    'click #see_rentals' : 'hideForm'
+  },
+  showForm: function() {
+    $('#see_movie_search').hide();
+    $('#see_rentals').show();
+    $('form').show();
+  },
+  hideForm: function() {
+    $('#see_movie_search').show();
+    $('#see_rentals').hide();
+    $('form').hide();
+    this.model.fetch();
   },
   getQueryForm: function() {
     var searchTerm = this.$('#search-query').val();
