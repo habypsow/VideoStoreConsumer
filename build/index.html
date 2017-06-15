@@ -14,9 +14,9 @@
   <main>
 
     <form>
-    <input type='text' placeholder='query' id='search-query' />
-    <button class="button success" id="search-movies">Search</button>
-  </form>
+      <input type='text' placeholder='query' id='search-query' />
+      <button class="button success" id="search-movies">Search</button>
+    </form>
 
     <section id='rental-details'></section>
     <section id='rental-list'></section>
@@ -27,6 +27,8 @@
   <!-- Rental (local API templates) -->
   <script id='rental-card-template' type='text/template'>
     <li><%- rental.title %></li>
+    <img src= '<%- rental.image_url %>' alt='movie_img'>
+    <%- console.log("This is the home page url " + rental.image_url) %>
   </script>
 
 
@@ -35,7 +37,8 @@
     <h4>Overview:<%- rental.overview %> </h4>
     <h4>Release Date:<%- rental.release_date %> </h4>
 
-    <img src= '<%- rental.image_url %>' >
+    <img src= '<%- rental.image_url %>' alt='movie_img' >
+      <%- console.log("This is the show page url " + rental.image_url) %>
     <button class="alert button" id="deleteButton">Delete</button>
   </script>
 
