@@ -60,6 +60,7 @@ var MovieListView = Backbone.View.extend({
     var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
     this.$('#rental-details').html(compiledTemplate);
     this.$('#rental-details').show();
+    this.$('#rental-list').hide();
   }
 });
 
