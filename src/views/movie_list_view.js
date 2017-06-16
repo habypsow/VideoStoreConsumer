@@ -8,17 +8,15 @@ var MovieListView = Backbone.View.extend({
     this.detailsTemplate = params.detailsTemplate;
     var rentalsShowing = true;
     this.$('#rental-details').hide();
-    //add additional needed templates here
-
     this.listenTo(this.model, "update", this.render);
-
-
     this.model.fetch();
   },
   events: {
     'click #see_movie_search' : 'showForm',
+    'click #see_movie_search' : 'hideDetails',
     'click #search-movies' : 'fetchMovies',
-    'click #see_rentals' : 'hideForm'
+    'click #see_rentals' : 'hideForm',
+    'click #see_rentals' : 'hideDetails',
   },
   showForm: function() {
     $('#see_movie_search').hide();
@@ -33,15 +31,28 @@ var MovieListView = Backbone.View.extend({
     this.rentalsShowing = true;
     this.model.fetch();
   },
+  showDetails: function(model) {
+    this.detailsRental = model;
+    var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
+    this.$('#rental-details').html(compiledTemplate);
+    if (this.rentalsShowing) {
+      this.$('#addRentalButton').hide();
+    }
+    this.$('#rental-details').show();
+    this.$('#rental-list').hide();
+    this.$('#see_rentals').show();
+  },
+  hideDetails: function() {
+    this.$('#rental-details').hide();
+    this.$('#rental-list').show();
+  },
   getQueryForm: function() {
     var searchTerm = this.$('#search-query').val();
     this.$('#search-query').val('');
-
     return searchTerm;
   },
   fetchMovies: function(e) {
     e.preventDefault();
-
     var query = this.getQueryForm();
     this.model.fetch({ data: $.param({query})});
   },
@@ -57,16 +68,6 @@ var MovieListView = Backbone.View.extend({
       this.listenTo(movieView, "selected", this.showDetails);
     });
     return this;
-  },
-  showDetails: function(model) {
-    this.detailsRental = model;
-    var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
-    this.$('#rental-details').html(compiledTemplate);
-    if (this.rentalsShowing) {
-      this.$('#addRentalButton').hide();
-    }
-    this.$('#rental-details').show();
-    this.$('#rental-list').hide();
   }
 });
 
