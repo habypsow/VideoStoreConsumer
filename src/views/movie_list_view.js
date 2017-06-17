@@ -15,12 +15,12 @@ var MovieListView = Backbone.View.extend({
     'click #see_movie_search' : 'showForm',
     'click #search-movies' : 'fetchMovies',
     'click #see_rentals' : 'hideForm',
-    'click #returnToRentalButton' : 'returnHome'
+    'click #returnToRentalButton' : 'returnHome',
+    'click #addRentalButton' : 'addNewRental'
   },
   showForm: function() {
     $('#see_movie_search').hide();
     $('#see_rentals').show();
-    console.log("showForm");
     this.hideDetails();
     $('form').show();
     this.rentalsShowing = false;
@@ -29,13 +29,12 @@ var MovieListView = Backbone.View.extend({
     $('#see_movie_search').show();
     $('#see_rentals').hide();
     this.hideDetails();
-    console.log("hideForm");
     $('form').hide();
     this.rentalsShowing = true;
     this.model.fetch();
   },
   showDetails: function(model) {
-    this.detailsRental = model;
+    // this.detailsRental = model;
     var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
     this.$('#rental-details').html(compiledTemplate);
     if (this.rentalsShowing) {
@@ -47,7 +46,6 @@ var MovieListView = Backbone.View.extend({
   },
   hideDetails: function() {
     this.$('#rental-details').hide();
-    console.log("hideDetails");
     this.$('#rental-list').show();
   },
   getQueryForm: function() {
@@ -79,6 +77,11 @@ var MovieListView = Backbone.View.extend({
   returnHome: function() {
     this.$('#rental-details').empty();
     this.$('#rental-list').show();
+  },
+  addNewRental: function(model) {
+    // var data = model.toJSON();
+    console.log(this.model);
+    this.model.create(this.model);
   }
 });
 
