@@ -14,9 +14,9 @@ var MovieListView = Backbone.View.extend({
   events: {
     'click #see_movie_search' : 'showForm',
     'click #search-movies' : 'fetchMovies',
-    'click #see_rentals' : 'hideForm',
-    'click #returnToRentalButton' : 'returnHome',
-    'click #addRentalButton' : 'addNewRental'
+    'click #see_rentals' : 'hideForm'//,
+    // 'click #returnToRentalButton' : 'returnHome',
+    // 'click #addRentalButton' : 'addNewRental'
   },
   showForm: function() {
     $('#see_movie_search').hide();
@@ -73,16 +73,16 @@ var MovieListView = Backbone.View.extend({
       that.listenTo(movieView, "selected", this.showDetails);
     });
     return this;
-  },
-  returnHome: function() {
-    this.$('#rental-details').empty();
-    this.$('#rental-list').show();
-  },
-  addNewRental: function(model) {
-    // var data = model.toJSON();
-    console.log(this.model);
-    this.model.create(this.model);
-  }
+  }//,
+  // returnHome: function() {
+  //   this.$('#rental-details').empty();
+  //   this.$('#rental-list').show();
+  // },
+  // addNewRental: function(model) {
+  //   // var data = model.toJSON();
+  //   console.log(this.model);
+  //   this.model.create(this.model);
+  // }
 });
 
 export default MovieListView;
