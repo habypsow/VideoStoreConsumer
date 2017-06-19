@@ -56,7 +56,7 @@ var MovieListView = Backbone.View.extend({
     })
     this.$('#rental-details').append(movieDetailsView.render().$el);
 
-    // that.listenTo(movieView, "selected", this.showDetails);
+    this.listenTo(movieDetailsView, "new", this.addNewRental);
 
       if (this.rentalsShowing) {
         this.$('#addRentalButton').hide();
@@ -94,16 +94,16 @@ var MovieListView = Backbone.View.extend({
       that.listenTo(movieView, "selected", this.showDetails);
     });
     return this;
-  }//,
+  },
   // returnHome: function() {
   //   this.$('#rental-details').empty();
   //   this.$('#rental-list').show();
   // },
-  // addNewRental: function(model) {
-  //   // var data = model.toJSON();
-  //   console.log(this.model);
-  //   this.model.create(this.model);
-  // }
+  addNewRental: function(model) {
+    var data = model.toJSON();
+    console.log(data);
+    this.model.create(data);
+  }
 });
 
 export default MovieListView;

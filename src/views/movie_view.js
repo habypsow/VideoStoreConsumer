@@ -17,12 +17,7 @@ var MovieView = Backbone.View.extend({
   },
   showDetails: function(event) {
     this.trigger("selected", this.model);
-  },
-  // returnHome: function(event) {
-  //     console.log("I am triggered");
-  //   this.trigger("home", this.model);
-
-  // }
+  }
 });
 
 export default MovieView;
