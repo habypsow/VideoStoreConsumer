@@ -17,8 +17,6 @@ var MovieListView = Backbone.View.extend({
     'click #see_movie_search' : 'showForm',
     'click #search-movies' : 'fetchMovies',
     'click #see_rentals' : 'hideForm'//,
-    // 'click #returnToRentalButton' : 'returnHome',
-    // 'click #addRentalButton' : 'addNewRental'
   },
   showForm: function() {
     $('#see_movie_search').hide();
@@ -35,28 +33,17 @@ var MovieListView = Backbone.View.extend({
     this.rentalsShowing = true;
     this.model.fetch();
   },
-  // showDetails: function(model) {
-  //   // this.detailsRental = model;
-  //   var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
-  //   this.$('#rental-details').html(compiledTemplate);
-  //   if (this.rentalsShowing) {
-  //     this.$('#addRentalButton').hide();
-  //   }
-  //   this.$('#rental-details').show();
-  //   this.$('#rental-list').hide();
-  //   this.$('#see_rentals').show();
-  // },
+
   showDetails: function(rental) {
     this.$('#rental-details').empty();
     var movieDetailsView = new MovieDetailsView({
       model: rental,
-      // template: _.template($('#rental-info-template').html())
       template: this.detailsTemplate
-      // el: '#rental-details'
     })
     this.$('#rental-details').append(movieDetailsView.render().$el);
 
     this.listenTo(movieDetailsView, "new", this.addNewRental);
+    this.listenTo(movieDetailsView, "home", this.returnHome);
 
       if (this.rentalsShowing) {
         this.$('#addRentalButton').hide();
@@ -95,13 +82,11 @@ var MovieListView = Backbone.View.extend({
     });
     return this;
   },
-  // returnHome: function() {
-  //   this.$('#rental-details').empty();
-  //   this.$('#rental-list').show();
-  // },
+  returnHome: function() {
+    this.$('#rental-details').empty();
+    this.$('#rental-list').show();
+  },
   addNewRental: function(model) {
-    // var data = model.toJSON();
-    // console.log(data);
     this.model.create(model);
   }
 });

@@ -7,7 +7,7 @@ var MovieDetailsView = Backbone.View.extend({
     this.template = params.template;
   },
   events: {
-    // 'click #returnToRentalButton' : 'returnHome',
+    'click #returnToRentalButton' : 'returnHome',
     'click #addRentalButton' : 'addNewRental'
   },
   render: function() {
@@ -15,15 +15,12 @@ var MovieDetailsView = Backbone.View.extend({
     this.$el.html(compiledTemplate);
     return this;
   },
-  // addNewRental: function() {
-  //   var data = this.model.toJSON();
-  //   console.log(data);
-  //   this.model.create(data);
-  // }
   addNewRental: function() {
     this.trigger("new", this.model);
+  },
+  returnHome: function() {
+    this.trigger("home")
   }
-
 });
 
 export default MovieDetailsView;
