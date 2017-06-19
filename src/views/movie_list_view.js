@@ -100,9 +100,9 @@ var MovieListView = Backbone.View.extend({
   //   this.$('#rental-list').show();
   // },
   addNewRental: function(model) {
-    var data = model.toJSON();
-    console.log(data);
-    this.model.create(data);
+    // var data = model.toJSON();
+    // console.log(data);
+    this.model.create(model);
   }
 });
 
