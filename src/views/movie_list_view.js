@@ -1,6 +1,8 @@
 import Backbone from 'backbone';
 import $ from 'jquery';
+import _ from 'underscore';
 import MovieView from './movie_view';
+import MovieDetailsView from './movie_details_view';
 
 var MovieListView = Backbone.View.extend({
   initialize: function(params) {
@@ -33,16 +35,35 @@ var MovieListView = Backbone.View.extend({
     this.rentalsShowing = true;
     this.model.fetch();
   },
-  showDetails: function(model) {
-    // this.detailsRental = model;
-    var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
-    this.$('#rental-details').html(compiledTemplate);
-    if (this.rentalsShowing) {
-      this.$('#addRentalButton').hide();
-    }
-    this.$('#rental-details').show();
-    this.$('#rental-list').hide();
-    this.$('#see_rentals').show();
+  // showDetails: function(model) {
+  //   // this.detailsRental = model;
+  //   var compiledTemplate = this.detailsTemplate({rental: model.toJSON()});
+  //   this.$('#rental-details').html(compiledTemplate);
+  //   if (this.rentalsShowing) {
+  //     this.$('#addRentalButton').hide();
+  //   }
+  //   this.$('#rental-details').show();
+  //   this.$('#rental-list').hide();
+  //   this.$('#see_rentals').show();
+  // },
+  showDetails: function(rental) {
+    this.$('#rental-details').empty();
+    var movieDetailsView = new MovieDetailsView({
+      model: rental,
+      // template: _.template($('#rental-info-template').html())
+      template: this.detailsTemplate
+      // el: '#rental-details'
+    })
+    this.$('#rental-details').append(movieDetailsView.render().$el);
+
+    // that.listenTo(movieView, "selected", this.showDetails);
+
+      if (this.rentalsShowing) {
+        this.$('#addRentalButton').hide();
+      }
+      this.$('#rental-details').show();
+      this.$('#rental-list').hide();
+      this.$('#see_rentals').show();
   },
   hideDetails: function() {
     this.$('#rental-details').hide();
