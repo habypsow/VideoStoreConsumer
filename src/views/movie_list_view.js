@@ -76,44 +76,45 @@ var MovieListView = Backbone.View.extend({
       $("#message").html("<h4>A search term is needed.</h4>");
     } else {
       this.model.fetch({ data: $.param({query}),
-        failure: this.fetchFail
-      });
-    }
-  },
-  render: function() {
-    this.$('#rental-list').empty();
-    this.$('#message').empty();
-    var that = this;
-    this.model.each((rental) => {
-      var movieView = new MovieView({
-        model: rental,
-        template: that.template
-      });
-      that.$('#rental-list').append(movieView.render().$el);
-      that.listenTo(movieView, "selected", this.showDetails);
+      failure: this.fetchFail
     });
-    return this;
-  },
-  returnHome: function() {
-    this.$('#rental-details').empty();
-    this.$('#rental-list').show();
-  },
-  addNewRental: function(model) {
-
-    var newRental =
-    model.save(null, {
-      success: function(model, response) {
-        console.log("success");
-      }
-    });
-    this.model.push(newRental);
-    this.$('#rental-details').empty();
-    this.$('#rental-list').show();
-    this.model.fetch();  
-  },
-  fetchFail: function(data){
-    $("#message").html("<h4>Unfortunately your request could not be completed.</h4>");
   }
+},
+render: function() {
+  this.$('#rental-list').empty();
+  this.$('#message').empty();
+  var that = this;
+  this.model.each((rental) => {
+    var movieView = new MovieView({
+      model: rental,
+      template: that.template
+    });
+    that.$('#rental-list').append(movieView.render().$el);
+    that.listenTo(movieView, "selected", this.showDetails);
+  });
+  return this;
+},
+returnHome: function() {
+  this.$('#rental-details').empty();
+  this.$('#rental-list').show();
+},
+addNewRental: function(model) {
+
+  var newRental =
+  model.save(null, {
+    success: function(model, response) {
+      $("#message").html("<h3>Movie successfully added to Video Store</h3>");
+      console.log("I am in success!!");
+    }
+  });
+  this.model.push(newRental);
+  this.$('#rental-details').empty();
+  this.$('#rental-list').show();
+  // this.model.fetch();
+},
+fetchFail: function(data){
+  $("#message").html("<h4>Unfortunately your request could not be completed.</h4>");
+}
 });
 
 export default MovieListView;
