@@ -11,12 +11,15 @@ var MovieListView = Backbone.View.extend({
     var rentalsShowing = true;
     this.$('#rental-details').hide();
     this.listenTo(this.model, "update", this.render);
-    this.model.fetch();
+    this.model.fetch({
+      failure: this.fetchFail
+    });
   },
   events: {
     'click #see_movie_search' : 'showForm',
     'click #search-movies' : 'fetchMovies',
-    'click #see_rentals' : 'hideForm'//,
+    'click #see_rentals' : 'hideForm',
+
   },
   showForm: function() {
     $('#see_movie_search').hide();
@@ -31,7 +34,9 @@ var MovieListView = Backbone.View.extend({
     this.hideDetails();
     $('form').hide();
     this.rentalsShowing = true;
-    this.model.fetch();
+    this.model.fetch({
+      failure: this.fetchFail
+    });
   },
 
   showDetails: function(rental) {
@@ -67,10 +72,17 @@ var MovieListView = Backbone.View.extend({
     this.$('#rental-list').show();
 
     var query = this.getQueryForm();
-    this.model.fetch({ data: $.param({query})});
+    if (!query) {
+      $("#message").html("<h4>A search term is needed.</h4>");
+    } else {
+      this.model.fetch({ data: $.param({query}),
+        failure: this.fetchFail
+      });
+    }
   },
   render: function() {
     this.$('#rental-list').empty();
+    this.$('#message').empty();
     var that = this;
     this.model.each((rental) => {
       var movieView = new MovieView({
@@ -87,6 +99,7 @@ var MovieListView = Backbone.View.extend({
     this.$('#rental-list').show();
   },
   addNewRental: function(model) {
+
     var newRental =
     model.save(null, {
       success: function(model, response) {
@@ -96,9 +109,11 @@ var MovieListView = Backbone.View.extend({
     this.model.push(newRental);
     this.$('#rental-details').empty();
     this.$('#rental-list').show();
-    this.model.fetch();
-
+    this.model.fetch();  
   },
+  fetchFail: function(data){
+    $("#message").html("<h4>Unfortunately your request could not be completed.</h4>");
+  }
 });
 
 export default MovieListView;
