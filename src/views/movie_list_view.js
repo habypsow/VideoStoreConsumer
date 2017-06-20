@@ -12,7 +12,7 @@ var MovieListView = Backbone.View.extend({
     this.$('#rental-details').hide();
     this.listenTo(this.model, "update", this.render);
     this.model.fetch({
-      failure: this.fetchFail
+      error: this.fetchFail
     });
   },
   events: {
@@ -35,10 +35,9 @@ var MovieListView = Backbone.View.extend({
     $('form').hide();
     this.rentalsShowing = true;
     this.model.fetch({
-      failure: this.fetchFail
+      error: this.fetchFail
     });
   },
-
   showDetails: function(rental) {
     this.$('#rental-details').empty();
     var movieDetailsView = new MovieDetailsView({
@@ -76,7 +75,9 @@ var MovieListView = Backbone.View.extend({
       $("#message").html("<h4>A search term is needed.</h4>");
     } else {
       this.model.fetch({ data: $.param({query}),
-      failure: this.fetchFail
+
+      success: this.fetchSuccess,
+      error: this.fetchFail
     });
   }
 },
@@ -98,6 +99,14 @@ returnHome: function() {
   this.$('#rental-details').empty();
   this.$('#rental-list').show();
 },
+fetchSuccess: function(collection) {
+  if (collection.length === 0) {
+    $("#message").html("<h4>The search had no results.</h4>");
+  }
+},
+fetchFail: function(data){
+  $("#message").html("<h4>Unfortunately your request could not be completed.</h4>");
+},
 addNewRental: function(model) {
 
   var newRental =
@@ -112,9 +121,6 @@ addNewRental: function(model) {
   this.$('#rental-list').show();
   // this.model.fetch();
 },
-fetchFail: function(data){
-  $("#message").html("<h4>Unfortunately your request could not be completed.</h4>");
-}
 });
 
 export default MovieListView;
