@@ -45,12 +45,12 @@ var MovieListView = Backbone.View.extend({
     this.listenTo(movieDetailsView, "new", this.addNewRental);
     this.listenTo(movieDetailsView, "home", this.returnHome);
 
-      if (this.rentalsShowing) {
-        this.$('#addRentalButton').hide();
-      }
-      this.$('#rental-details').show();
-      this.$('#rental-list').hide();
-      this.$('#see_rentals').show();
+    if (this.rentalsShowing) {
+      this.$('#addRentalButton').hide();
+    }
+    this.$('#rental-details').show();
+    this.$('#rental-list').hide();
+    this.$('#see_rentals').show();
   },
   hideDetails: function() {
     this.$('#rental-details').hide();
@@ -87,12 +87,18 @@ var MovieListView = Backbone.View.extend({
     this.$('#rental-list').show();
   },
   addNewRental: function(model) {
-    this.model.create(model);
+    var newRental =
+    model.save(null, {
+      success: function(model, response) {
+        console.log("success");
+      }
+    });
+    this.model.push(newRental);
     this.$('#rental-details').empty();
     this.$('#rental-list').show();
     this.model.fetch();
-    alert("Movie was successfully added to the rental library");
-  }
+
+  },
 });
 
 export default MovieListView;
