@@ -39,7 +39,7 @@ var MovieListView = Backbone.View.extend({
     var movieDetailsView = new MovieDetailsView({
       model: rental,
       template: this.detailsTemplate
-    })
+    });
     this.$('#rental-details').append(movieDetailsView.render().$el);
 
     this.listenTo(movieDetailsView, "new", this.addNewRental);
@@ -88,6 +88,10 @@ var MovieListView = Backbone.View.extend({
   },
   addNewRental: function(model) {
     this.model.create(model);
+    this.$('#rental-details').empty();
+    this.$('#rental-list').show();
+    this.model.fetch();
+    alert("Movie was successfully added to the rental library");
   }
 });
 
