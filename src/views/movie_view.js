@@ -6,6 +6,10 @@ var MovieView = Backbone.View.extend({
 
     this.listenTo(this.model, "change", this.render);
   },
+  attributes: {
+    class: 'small-6 medium-4 large-3 columns'
+    // class: 'column column-block'
+  },
   events: {
     'click': 'showDetails',
 
