@@ -10,6 +10,10 @@ var MovieDetailsView = Backbone.View.extend({
     'click #returnToRentalButton' : 'returnHome',
     'click #addRentalButton' : 'addNewRental'
   },
+  attributes: {
+    class: 'small-6 medium-3 columns'
+    // class: 'column column-block'
+  },
   render: function() {
     var compiledTemplate = this.template({rental: this.model.toJSON()});
     this.$el.html(compiledTemplate);

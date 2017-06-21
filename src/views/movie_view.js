@@ -7,12 +7,11 @@ var MovieView = Backbone.View.extend({
     this.listenTo(this.model, "change", this.render);
   },
   attributes: {
-    class: 'small-6 medium-4 large-3 columns'
+    class: 'small-6 medium-3 large-3 columns movie-card-profile'
     // class: 'column column-block'
   },
   events: {
     'click': 'showDetails',
-
   },
   render: function() {
     var compiledTemplate = this.template({rental: this.model.toJSON()});
