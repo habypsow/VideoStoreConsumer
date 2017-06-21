@@ -11,7 +11,7 @@ var MovieDetailsView = Backbone.View.extend({
     'click #addRentalButton' : 'addNewRental'
   },
   attributes: {
-    class: 'small-6 medium-3 columns'
+    class: 'medium-12 columns'
     // class: 'column column-block'
   },
   render: function() {
