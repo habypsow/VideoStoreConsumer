@@ -25,6 +25,13 @@ header {
 li {
   list-style: none;
 }
+/*Styling Form*/
+#search-query {
+  width: 100%;
+  padding: 12px 20px;
+}
+
+
 
 /* Styling rental-list*/
 .movie-card-profile {
@@ -44,7 +51,7 @@ li {
   font-weight: 300;
   font-size: 1.5rem;
   border-left: 6px solid #6BBAA7;
- /*background-color: lightgray;*/
+  /*background-color: lightgray;*/
 
 }
 
