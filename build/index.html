@@ -10,13 +10,13 @@
 </head>
 <body>
   <header class="wrap">
-      <h1>All the Movies you Care to Rent</h1>
-      <nav>
-        <ul class="wrap">
-          <li id="see_rentals">[view rental library]</li>
-          <li id="see_movie_search">[search for new movies]</li>
-        </ul>
-      </nav>
+    <h1>All the Movies you Care to Rent</h1>
+    <nav>
+      <ul class="wrap">
+        <li id="see_rentals">[view rental library]</li>
+        <li id="see_movie_search">[search for new movies]</li>
+      </ul>
+    </nav>
   </header>
   <main>
     <section id="message"></section>
@@ -47,13 +47,21 @@
 
 
   <script id='rental-info-template' type='text/template'>
-    <h3><%- rental.title %> </h3>
-    <h4><%- rental.overview %> </h4>
-    <h4>Release Date: <%- rental.release_date %> </h4>
-
-    <img src= '<%- rental.image_url %>' alt='movie_img' >
-    <button class="button button-rounded-hover" id="addRentalButton">Add to rentals</button>
-    <button class="button button-rounded-hover" id="returnToRentalButton">Return to list</button>
+    <section class="row">
+      <div class="small-12 medium-4 columns">
+        <img id="details-img" src= '<%- rental.image_url %>' alt='movie_img' >
+      </div>
+      <div class="small-12 medium-6 columns end">
+        <h3><%- rental.title %> </h3>
+        <h4><%- rental.overview %> </h4>
+        <h4>Release Date: <%- rental.release_date %> </h4>
+        <button class="button button-rounded-hover" id="addRentalButton">Add to rentals</button>
+        <button class="button button-rounded-hover" id="returnToRentalButton">Return to list</button>
+      </div>
+      <!-- <div class="small-12 medium-2">
+        <p>x</p>
+      </div> -->
+    </section>
   </script>
 
 
