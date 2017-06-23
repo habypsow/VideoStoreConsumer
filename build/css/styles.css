@@ -23,7 +23,7 @@ h3, h4 {
   margin: 0 auto;
 }
 
-main {
+body {
   background: #F4F4F4;
 }
 
@@ -38,9 +38,14 @@ li {
   list-style: none;
 }
 /*Styling Form*/
-#search-query {
+/*#search-query {
   width: 100%;
   padding: 12px 20px;
+}*/
+
+#movie-search {
+ margin-top: 10px;
+ margin-bottom: 10px;
 }
 
 
@@ -102,11 +107,19 @@ border-style: solid;
 #search-query {
   width: 75%;
 }
+.button {
+  /*background-color: #6BBAA7;*/
+  /*background-color: #6D7993;*/
+  background-color: #a7aebe;
+
+
+}
 .button-rounded-hover {
   border: 0;
   border-radius: 5000px;
+
   padding: .75rem 1.25rem;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   position: relative;
   overflow: hidden;
   font-family: 'Open Sans Condensed', sans-serif;
@@ -139,14 +152,18 @@ border-style: solid;
   bottom: 0px;
   left: 0px;
   right: 0px;
-  border: 2px solid #115b8d;
+  /*border: 2px solid #115b8d;*/
+  border: 1px solid #6D7993;
+
   content: '';
   border-radius: inherit;
 }
 
 .button-rounded-hover:hover,
 .button-rounded-hover:focus {
-  background-color: #115b8d;
+  /*background-color: #6D7993;*/
+  background-color: #6BBAA7;
+
 }
 
 .button-rounded-hover:hover:before,
