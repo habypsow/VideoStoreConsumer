@@ -20,7 +20,7 @@
   </header>
   <main>
     <section id="message"></section>
-    <form class="hero-search-filter-form wrap" action="">
+    <form id="movie-search" class="hero-search-filter-form wrap" action="">
       <label for="search-query">Find</label>
       <input id="search-query" class="hero-search-filter-form-find" type="text" />
       <button class="button button-rounded-hover" id="search-movies">Search</button>
@@ -52,8 +52,8 @@
     <h4>Release Date: <%- rental.release_date %> </h4>
 
     <img src= '<%- rental.image_url %>' alt='movie_img' >
-    <button class="alert button" id="addRentalButton">Add to rental library</button>
-    <button class="alert button" id="returnToRentalButton">Return to full listing</button>
+    <button class="button button-rounded-hover" id="addRentalButton">Add to rentals</button>
+    <button class="button button-rounded-hover" id="returnToRentalButton">Return to list</button>
   </script>
 
 
