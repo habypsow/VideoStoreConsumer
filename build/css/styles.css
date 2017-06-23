@@ -24,7 +24,7 @@ h3, h4 {
   margin: 0 auto;
 }
 
-main {
+body {
   background: #F4F4F4;
 }
 
@@ -210,7 +210,7 @@ button.success {
 }
 
 .hero-search-filter-form {
-  margin-top: 20px;
+  margin-top: 5px;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -258,10 +258,25 @@ button.success {
   box-shadow: none;
 }
 
+/*Styling messages*/
+
+#message {
+  padding: 5px;
+  color: #FBA100;
+  text-align: center;
+  margin-top: 5px;
+}
+
+
 /*Footer Styling*/
 
 footer {
   text-align: center;
   background-color: #6D7993;
   padding: 0.5rem;
+  height: 100px;
+}
+
+.movie-attr {
+  height: 30px;
 }
