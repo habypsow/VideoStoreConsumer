@@ -5,11 +5,12 @@
   <link rel="stylesheet" type="text/css" href="css/_settings.css">
   <link rel="stylesheet" type="text/css" href="css/foundation.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Pacifico" rel="stylesheet">
   <title>Video Store Movie Manager</title>
 </head>
 <body>
   <header>
-    <h1 class="wrap">Movies</h1>
+    <h1 class="wrap">All the Movies you Care to Rent</h1>
     <nav>
       <ul class="wrap">
         <li id="see_rentals">[view rental library]</li>
@@ -19,11 +20,14 @@
   </header>
   <main>
     <section id="message"></section>
-
-    <form class="wrap">
-      <input type='text' placeholder='query' id='search-query'  />
-      <button class="button success" id="search-movies">Search</button>
+    <form class="hero-search-filter-form wrap" action="">
+      <label for="search-query">Find</label>
+      <input id="search-query" class="hero-search-filter-form-find" type="text" />
+      <button class="button button-rounded-hover" id="search-movies">Search</button>
     </form>
+
+
+
 
     <section id='rental-details' class="row wrap"></section>
     <section id='rental-list' class="row"></section>
@@ -51,19 +55,7 @@
   </script>
 
 
-  <!-- temporary (trying to use one template for both) Movies (Movie API templates) -->
-  <script id='movie-card-template' type='text/template'>
-    <li><%- movie.title %></li>
-  </script>
 
-  <script id='movie-info-template' type='text/template'>
-    <h3>Title:<%- movie.title %> </h3>
-    <h4>Overview:<%- movie.overview %> </h4>
-    <h4>Release Date:<%- movie.release_date %> </h4>
-    <h4>Image:<%- movie.image_url %> </h4>
-    <button class="success button" id="addButton">Add to Library</button>
-    <button class="alert button" id="deleteButton">Delete</button>
-  </script>
 
 
   <script src="/app.bundle.js"></script>
