@@ -1,9 +1,10 @@
 @include foundation-everything;
 
-/*Aqua: #6BBAA7 */
+/*Aqua: #6BBAA7*/
 /*Sunshine: #FBA100 */
 /*Lavender: #B6A19E*/
 /*Dusty Rose: #B6A19E*/
+
 
 body, h1 {
   font-family: 'Pacifico', cursive;
@@ -30,7 +31,9 @@ main {
 header {
   background-color: #6D7993;
   padding: 0.5rem;
-  margin: 10px 15px 10px 15px;
+  /*margin-left: 10px;
+  margin-right: 15px;*/
+  /*10px 15px;*/
   /*height: 60%;*/
 }
 
@@ -50,26 +53,24 @@ li {
 .movie-card-profile {
   position: relative;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .movie-card-profile-img {
   width: 350px;
   height: 300px;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 10px 20px;
 }
 
 .movie-card-profile-name {
-  margin-left: 15px;
+  margin-left: 18px;
   height: 30px;
-  /*margin-left: 5px;*/
   text-align: center;
   margin-bottom: 20px;
   font-weight: 300;
   font-size: 1.5rem;
   border-left: 6px solid #6BBAA7;
-  /*background-color: lightgray;*/
-
 }
 
 /*Styling Details*/
@@ -80,27 +81,6 @@ button.success {
   margin-right: 1.2rem;
   display: inline;
 }
-
-/*aside.create-tasklist {
-background-color: navy;
-color: #FFFFFF;
-}*/
-/*aside label {
-color: #FFFFFF;
-}*/
-
-/*.completed {
-text-decoration: line-through;
-}*/
-
-/*div {
-display: inline;
-}*/
-/*
-* {
-border-style: solid;
-}
-*/
 
 /* form and button styling */
 #search-query {
@@ -275,4 +255,12 @@ border-style: solid;
 .hero-search-filter-form-near:focus {
   border: 0;
   box-shadow: none;
+}
+
+/*Footer Styling*/
+
+footer {
+  text-align: center;
+  background-color: #6D7993;
+  padding: 0.5rem;
 }
