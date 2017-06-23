@@ -5,6 +5,18 @@
 /*Lavender: #B6A19E*/
 /*Dusty Rose: #B6A19E*/
 
+body, h1 {
+  font-family: 'Pacifico', cursive;
+}
+
+h1 {
+  color: #FBA100;
+}
+
+h3, h4 {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .wrap {
   width: 95%;
   max-width: 1100px;
@@ -30,6 +42,7 @@ li {
   width: 100%;
   padding: 12px 20px;
 }
+
 
 
 
@@ -84,3 +97,178 @@ display: inline;
 border-style: solid;
 }
 */
+
+/* form and button styling */
+#search-query {
+  width: 75%;
+}
+.button-rounded-hover {
+  border: 0;
+  border-radius: 5000px;
+  padding: .75rem 1.25rem;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  transition: all 0.35s ease;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+
+.button-rounded-hover:before {
+  opacity: 0;
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border-radius: inherit;
+  background-color: #fefefe;
+  transition: all 0.3s;
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.button-rounded-hover:after {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border: 2px solid #115b8d;
+  content: '';
+  border-radius: inherit;
+}
+
+.button-rounded-hover:hover,
+.button-rounded-hover:focus {
+  background-color: #115b8d;
+}
+
+.button-rounded-hover:hover:before,
+.button-rounded-hover:focus:before {
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+  opacity: 0.25;
+}
+/* fancy form */
+
+/*.hero-search-filter {
+  background: url("https://images.pexels.com/photos/115095/pexels-photo-115095.jpeg?w=940&h=650&auto=compress&cs=tinysrgb") center center no-repeat;
+  height: 300px;
+  background-size: cover;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hero-search-filter-logo {
+  margin-bottom: 2rem;
+}*/
+
+.hero-search-filter-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 300px;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.hero-search-filter-menu {
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .hero-search-filter-menu li {
+    -webkit-flex-basis: 50%;
+        -ms-flex-preferred-size: 50%;
+            flex-basis: 50%;
+  }
+  .hero-search-filter-menu li a {
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.hero-search-filter-menu a {
+  color: #fefefe;
+  font-weight: bold;
+}
+
+.hero-search-filter-menu a .fa {
+  font-size: 1.125rem;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.hero-search-filter-menu a:hover {
+  text-decoration: underline;
+}
+
+.hero-search-filter-form {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  background: #fefefe;
+  padding: 0.25rem;
+  border-radius: 5px;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hero-search-filter-form .divider {
+  background-color: #cacaca;
+  width: 1px;
+}
+
+.hero-search-filter-form label {
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  color: #8a8a8a;
+  font-weight: bold;
+}
+
+.hero-search-filter-form input,
+.hero-search-filter-form .button {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .hero-search-filter-form {
+    width: 95%;
+  }
+}
+
+.hero-search-filter-form-find,
+.hero-search-filter-form-near {
+  border: 0;
+  box-shadow: none;
+}
+
+.hero-search-filter-form-find:focus,
+.hero-search-filter-form-near:focus {
+  border: 0;
+  box-shadow: none;
+}
