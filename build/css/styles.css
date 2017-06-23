@@ -37,15 +37,31 @@ li {
 .movie-card-profile {
   position: relative;
   margin-bottom: 1rem;
+  border: solid 0.5px #B6A19E;
+  padding: 20px;
+  margin: 20px;
+}
+
+#img-container {
+  /*display: flex;*/
+  /*width: 200px;*/
+  /*height: 200px;*/
 }
 
 .movie-card-profile-img {
+  /*overflow: hidden;*/
+  /*display: block;*/
   width: 400px;
   height: 300px;
   border-radius: 5px;
+  /*object-fit:contain;*/
+  padding: 5px;
 }
 
 .movie-card-profile-name {
+  /*margin: 25px;*/
+  /*height: 10%;*/
+  margin-left: 20px;
   text-align: center;
   margin-bottom: 0;
   font-weight: 300;
@@ -62,7 +78,9 @@ li {
 button.success {
   margin-right: 1.2rem;
   display: inline;
+  background-color: blue;
 }
+
 
 /*aside.create-tasklist {
 background-color: navy;

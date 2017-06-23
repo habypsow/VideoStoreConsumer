@@ -33,7 +33,9 @@
   <!-- Templates -->
   <!-- Rental (local API templates) -->
   <script id='rental-card-template' type='text/template'>
-      <img class="movie-card-profile-img" src= '<%- rental.image_url %>' alt='movie_img'>
+    <div id="img-container">
+      <a href="#"><img class="movie-card-profile-img" src= '<%- rental.image_url %>' alt='movie_img'></a>
+    </div>
     <li class="movie-card-profile-name"><%- rental.title %></li>
   </script>
 

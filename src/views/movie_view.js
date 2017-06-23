@@ -9,6 +9,7 @@ var MovieView = Backbone.View.extend({
   attributes: {
     class: 'small-6 medium-3 large-3 columns movie-card-profile'
     // class: 'column column-block'
+    // class: 'small-block-grid-2 medium-block-grid-3 large-block-grid-4'
   },
   events: {
     'click': 'showDetails',
